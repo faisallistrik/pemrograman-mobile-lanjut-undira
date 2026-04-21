@@ -5,6 +5,6 @@ class MyImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Icon(Icons.image, size: 100);
+    return const Image(image: AssetImage("images/logo_undira.png"));
   }
 }

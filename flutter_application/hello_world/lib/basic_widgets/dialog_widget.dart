@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyDialogWidget extends StatelessWidget {
-  const MyDialogWidget({Key? key}) : super(key: key);
+  const MyDialogWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class MyDialogWidget extends StatelessWidget {
   }
 }
 
-showAlertDialog(BuildContext context) {
+void showAlertDialog(BuildContext context) {
   // set up the button
   Widget okButton = TextButton(
     child: const Text("OK"),

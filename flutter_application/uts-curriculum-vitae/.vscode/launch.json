@@ -1,0 +1,28 @@
+{
+  "profiles": [
+    {
+      "name": "Android",
+      "pathOverride": "android"
+    },
+    {
+      "name": "iOS",
+      "pathOverride": "ios"
+    },
+    {
+      "name": "Web",
+      "pathOverride": "web"
+    },
+    {
+      "name": "Windows",
+      "pathOverride": "windows"
+    },
+    {
+      "name": "macOS",
+      "pathOverride": "macos"
+    },
+    {
+      "name": "Linux",
+      "pathOverride": "linux"
+    }
+  ]
+}

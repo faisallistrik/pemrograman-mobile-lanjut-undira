@@ -113,7 +113,7 @@ final cvData = CVData(
       fieldOfStudy: 'Information Technology',
       startDate: '2025',
       endDate: '2027', // Estimasi kelulusan sesuai profil [cite: 58]
-      gpa: 0.0,
+      gpa: 0,
       description: 'Fokus pada pengembangan Software Engineering.',
     ),
     Education(
@@ -122,7 +122,7 @@ final cvData = CVData(
       fieldOfStudy: 'Digital Communication and Media/Multimedia',
       startDate: '2014',
       endDate: '2017', // Sesuai data dokumen 
-      gpa: 0.0,
+      gpa: 0,
       description: 'Mempelajari multimedia, komunikasi digital, dan media kreatif.',
     ),
     Education(
@@ -131,7 +131,7 @@ final cvData = CVData(
       fieldOfStudy: '-',
       startDate: '2011',
       endDate: '2014',
-      gpa: 0.0,
+      gpa: 0,
       description: 'Pendidikan menengah pertama.',
     ),
     Education(
@@ -140,7 +140,7 @@ final cvData = CVData(
       fieldOfStudy: '-',
       startDate: '2005',
       endDate: '2011',
-      gpa: 0.0,
+      gpa: 0,
       description: 'Pendidikan dasar.',
     ),
   ],

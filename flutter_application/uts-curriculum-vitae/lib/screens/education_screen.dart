@@ -4,23 +4,21 @@ import 'package:uts_curriculum_vitae/data/sample_cv_data.dart';
 import 'package:uts_curriculum_vitae/widgets/custom_widgets.dart';
 
 class EducationScreen extends StatelessWidget {
-  const EducationScreen({Key? key}) : super(key: key);
+  const EducationScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text('Education'),
         elevation: 0,
       ),
       body: ListView(
         children: [
-          SectionHeader(
+          const SectionHeader(
             title: 'Education',
             icon: Icons.school_outlined,
           ),
-          ...cvData.educations.map((edu) {
-            return EducationCard(
+          ...cvData.educations.map((edu) => EducationCard(
               institution: edu.institution,
               degree: edu.degree,
               fieldOfStudy: edu.fieldOfStudy,
@@ -28,15 +26,13 @@ class EducationScreen extends StatelessWidget {
               endDate: edu.endDate,
               description: edu.description,
               gpa: edu.gpa,
-            );
-          }).toList(),
+            )),
           if (cvData.certifications.isNotEmpty) ...[
-            SectionHeader(
+            const SectionHeader(
               title: 'Certifications',
               icon: Icons.card_membership_outlined,
             ),
-            ...cvData.certifications.map((cert) {
-              return Card(
+            ...cvData.certifications.map((cert) => Card(
                 margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Padding(
                   padding: const EdgeInsets.all(16),
@@ -67,12 +63,10 @@ class EducationScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-              );
-            }).toList(),
+              )),
           ],
           const SizedBox(height: 16),
         ],
       ),
     );
-  }
 }

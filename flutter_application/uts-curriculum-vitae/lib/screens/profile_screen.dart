@@ -7,7 +7,7 @@ import 'package:uts_curriculum_vitae/data/sample_cv_data.dart';
 import 'package:uts_curriculum_vitae/widgets/custom_widgets.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   void _launchURL(String url) async {
     if (await canLaunchUrl(Uri.parse(url))) {
@@ -39,6 +39,7 @@ class ProfileScreen extends StatelessWidget {
                 position: info.position,
                 location: info.location,
                 summary: info.summary,
+                profileImage: info.profileImage,
               ),
             ),
             actions: [
@@ -161,8 +162,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 12),
-                        ...cvData.languages.map((lang) {
-                          return Padding(
+                        ...cvData.languages.map((lang) => Padding(
                             padding: const EdgeInsets.symmetric(vertical: 4),
                             child: Row(
                               children: [
@@ -175,8 +175,7 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          );
-                        }).toList(),
+                          )),
                       ],
                     ),
                 ],
@@ -188,8 +187,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoRow(IconData icon, String label, String value) {
-    return Row(
+  Widget _buildInfoRow(IconData icon, String label, String value) => Row(
       children: [
         Icon(icon, size: 18, color: Colors.blue),
         const SizedBox(width: 12),
@@ -217,5 +215,4 @@ class ProfileScreen extends StatelessWidget {
         ),
       ],
     );
-  }
 }

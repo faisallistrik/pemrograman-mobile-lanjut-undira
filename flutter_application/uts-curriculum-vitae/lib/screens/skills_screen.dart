@@ -4,13 +4,13 @@ import 'package:uts_curriculum_vitae/data/sample_cv_data.dart';
 import 'package:uts_curriculum_vitae/widgets/custom_widgets.dart';
 
 class SkillsScreen extends StatelessWidget {
-  const SkillsScreen({Key? key}) : super(key: key);
+  const SkillsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     // Group skills by category
-    final Map<String, List<dynamic>> skillsByCategory = {};
-    for (var skill in cvData.skills) {
+    final skillsByCategory = <String, List<dynamic>>{};
+    for (final skill in cvData.skills) {
       if (!skillsByCategory.containsKey(skill.category)) {
         skillsByCategory[skill.category] = [];
       }
@@ -24,12 +24,11 @@ class SkillsScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          SectionHeader(
+          const SectionHeader(
             title: 'Professional Skills',
             icon: Icons.star_outline,
           ),
-          ...skillsByCategory.entries.map((entry) {
-            return Column(
+          ...skillsByCategory.entries.map((entry) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
@@ -57,17 +56,14 @@ class SkillsScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Wrap(
                     alignment: WrapAlignment.start,
-                    children: entry.value.map((skill) {
-                      return SkillBadge(
+                    children: entry.value.map((skill) => SkillBadge(
                         name: skill.name,
                         level: skill.level,
-                      );
-                    }).toList(),
+                      )).toList(),
                   ),
                 ),
               ],
-            );
-          }).toList(),
+            )),
           const SizedBox(height: 24),
           // Skills Summary
           Padding(
@@ -96,18 +92,15 @@ class SkillsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSkillLevelInfo(String label, int level, Color color) {
-    return Padding(
+  Widget _buildSkillLevelInfo(String label, int level, Color color) => Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
-          ...List.generate(5, (index) {
-            return Icon(
+          ...List.generate(5, (index) => Icon(
               Icons.star,
               size: 16,
               color: index < level ? color : Colors.grey[300],
-            );
-          }),
+            )),
           const SizedBox(width: 16),
           Text(
             label,
@@ -116,5 +109,4 @@ class SkillsScreen extends StatelessWidget {
         ],
       ),
     );
-  }
 }

@@ -7,11 +7,10 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => MaterialApp(
       title: 'UTS Curriculum Vitae',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
@@ -19,5 +18,4 @@ class MyApp extends StatelessWidget {
       home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
-  }
 }

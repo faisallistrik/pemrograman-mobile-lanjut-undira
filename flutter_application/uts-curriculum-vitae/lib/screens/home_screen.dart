@@ -2,11 +2,10 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text('Curriculum Vitae'),
         elevation: 0,
@@ -16,15 +15,15 @@ class HomeScreen extends StatelessWidget {
           Container(
             color: Colors.blue,
             padding: const EdgeInsets.all(20),
-            child: Column(
+            child: const Column(
               children: [
                 CircleAvatar(
                   radius: 50,
                   backgroundColor: Colors.white,
-                  child: const Icon(Icons.person, size: 50),
+                  child: Icon(Icons.person, size: 50),
                 ),
-                const SizedBox(height: 15),
-                const Text(
+                SizedBox(height: 15),
+                Text(
                   'Your Name',
                   style: TextStyle(
                     fontSize: 24,
@@ -32,8 +31,8 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 5),
-                const Text(
+                SizedBox(height: 5),
+                Text(
                   'Your Position',
                   style: TextStyle(
                     fontSize: 14,
@@ -43,38 +42,38 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20),
+          const Padding(
+            padding: EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'About',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 10),
-                const Text(
+                SizedBox(height: 10),
+                Text(
                   'Your professional summary goes here.',
                   style: TextStyle(fontSize: 14, height: 1.5),
                 ),
-                const SizedBox(height: 30),
-                const Text(
+                SizedBox(height: 30),
+                Text(
                   'Skills',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10),
                 Wrap(
                   spacing: 8,
                   children: [
-                    Chip(label: const Text('Flutter')),
-                    Chip(label: const Text('Dart')),
-                    Chip(label: const Text('UI/UX')),
+                    Chip(label: Text('Flutter')),
+                    Chip(label: Text('Dart')),
+                    Chip(label: Text('UI/UX')),
                   ],
                 ),
               ],
@@ -83,5 +82,4 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
-  }
 }

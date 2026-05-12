@@ -6,7 +6,7 @@ import 'package:uts_curriculum_vitae/data/sample_cv_data.dart';
 import 'package:uts_curriculum_vitae/widgets/custom_widgets.dart';
 
 class ContactScreen extends StatelessWidget {
-  const ContactScreen({Key? key}) : super(key: key);
+  const ContactScreen({super.key});
 
   void _launchURL(String url) async {
     if (await canLaunchUrl(Uri.parse(url))) {
@@ -15,14 +15,14 @@ class ContactScreen extends StatelessWidget {
   }
 
   void _makePhoneCall(String phoneNumber) async {
-    final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
+    final phoneUri = Uri(scheme: 'tel', path: phoneNumber);
     if (await canLaunchUrl(phoneUri)) {
       await launchUrl(phoneUri);
     }
   }
 
   void _sendEmail(String email) async {
-    final Uri emailUri = Uri(
+    final emailUri = Uri(
       scheme: 'mailto',
       path: email,
       queryParameters: {
@@ -45,7 +45,7 @@ class ContactScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          SectionHeader(
+          const SectionHeader(
             title: 'Get in Touch',
             icon: Icons.contact_mail_outlined,
           ),
@@ -204,8 +204,7 @@ class ContactScreen extends StatelessWidget {
     required String title,
     required String value,
     required VoidCallback? onTap,
-  }) {
-    return GestureDetector(
+  }) => GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(16),
@@ -257,15 +256,13 @@ class ContactScreen extends StatelessWidget {
         ),
       ),
     );
-  }
 
   Widget _buildSocialButton({
     required IconData icon,
     required String label,
     required Color color,
     required VoidCallback onTap,
-  }) {
-    return GestureDetector(
+  }) => GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16),
@@ -290,5 +287,4 @@ class ContactScreen extends StatelessWidget {
         ),
       ),
     );
-  }
 }

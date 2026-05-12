@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:uts_curriculum_vitae/screens/profile_screen.dart';
+import 'package:flutter/material.dart'; import 'package:uts_curriculum_vitae/screens/profile_screen.dart';
 import 'package:uts_curriculum_vitae/screens/experience_screen.dart';
 import 'package:uts_curriculum_vitae/screens/education_screen.dart';
 import 'package:uts_curriculum_vitae/screens/skills_screen.dart';
@@ -10,14 +9,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => MaterialApp(
       title: 'UTS Curriculum Vitae',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        // primarySwatch: Colors.blue,
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.blue,
@@ -28,11 +27,10 @@ class MyApp extends StatelessWidget {
       home: const MainApp(),
       debugShowCheckedModeBanner: false,
     );
-  }
 }
 
 class MainApp extends StatefulWidget {
-  const MainApp({Key? key}) : super(key: key);
+  const MainApp({super.key});
 
   @override
   State<MainApp> createState() => _MainAppState();
@@ -56,8 +54,7 @@ class _MainAppState extends State<MainApp> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
@@ -87,5 +84,4 @@ class _MainAppState extends State<MainApp> {
         ],
       ),
     );
-  }
 }

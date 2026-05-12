@@ -4,23 +4,21 @@ import 'package:uts_curriculum_vitae/data/sample_cv_data.dart';
 import 'package:uts_curriculum_vitae/widgets/custom_widgets.dart';
 
 class ExperienceScreen extends StatelessWidget {
-  const ExperienceScreen({Key? key}) : super(key: key);
+  const ExperienceScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text('Work Experience'),
         elevation: 0,
       ),
       body: ListView(
         children: [
-          SectionHeader(
+          const SectionHeader(
             title: 'Professional Experience',
             icon: Icons.work_outline,
           ),
-          ...cvData.experiences.map((exp) {
-            return ExperienceCard(
+          ...cvData.experiences.map((exp) => ExperienceCard(
               company: exp.company,
               position: exp.position,
               location: exp.location,
@@ -28,11 +26,9 @@ class ExperienceScreen extends StatelessWidget {
               endDate: exp.endDate,
               description: exp.description,
               isCurrent: exp.isCurrent,
-            );
-          }).toList(),
+            )),
           const SizedBox(height: 16),
         ],
       ),
     );
-  }
 }

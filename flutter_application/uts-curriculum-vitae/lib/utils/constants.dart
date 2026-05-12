@@ -6,13 +6,13 @@ class AppConstants {
   static const String appVersion = '1.0.0';
 
   // Sizing
-  static const double defaultPadding = 16.0;
-  static const double smallPadding = 8.0;
-  static const double largePadding = 32.0;
+  static const double defaultPadding = 16;
+  static const double smallPadding = 8;
+  static const double largePadding = 32;
 
   // Border Radius
-  static const double defaultBorderRadius = 8.0;
-  static const double largeBorderRadius = 16.0;
+  static const double defaultBorderRadius = 8;
+  static const double largeBorderRadius = 16;
 
   // Durations
   static const Duration shortDuration = Duration(milliseconds: 300);

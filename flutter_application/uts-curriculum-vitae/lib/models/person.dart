@@ -1,10 +1,5 @@
 // lib/models/person.dart
 class Person {
-  final String name;
-  final String email;
-  final String phone;
-  final String position;
-  final String summary;
 
   Person({
     required this.name,
@@ -13,4 +8,9 @@ class Person {
     required this.position,
     required this.summary,
   });
+  final String name;
+  final String email;
+  final String phone;
+  final String position;
+  final String summary;
 }

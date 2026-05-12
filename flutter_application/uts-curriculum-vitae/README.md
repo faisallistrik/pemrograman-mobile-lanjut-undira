@@ -138,14 +138,23 @@ Format your code with:
 dart format lib/ test/
 ```
 
-## License
-
-This project is created for educational purposes.
-
 ## Author
 
-UTS Curriculum Vitae Project
+Muhamad Faisal
 
 ---
 
-Happy coding! 🚀
+**Nama:** Muhamad Faisal
+**NIM** 411251167
+**Program:** Pemrograman Mobile Lanjut
+
+Screenshot CV
+![Profile] (assets/images/uts-ss1.png)
+
+![Experience] (assets/images/uts-ss2.png)
+
+![Education] (assets/images/uts-ss3.png)
+
+![Skiils] (assets/images/uts-ss4.png)
+
+![Contact] (assets/images/uts-ss5.png)

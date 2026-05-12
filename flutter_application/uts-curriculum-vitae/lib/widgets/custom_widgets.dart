@@ -2,18 +2,17 @@
 import 'package:flutter/material.dart';
 
 class SectionHeader extends StatelessWidget {
+
+  const SectionHeader({
+    super.key,
+    required this.title,
+    required this.icon,
+  });
   final String title;
   final IconData icon;
 
-  const SectionHeader({
-    Key? key,
-    required this.title,
-    required this.icon,
-  }) : super(key: key);
-
   @override
-  Widget build(BuildContext context) {
-    return Padding(
+  Widget build(BuildContext context) => Padding(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: Row(
         children: [
@@ -29,10 +28,20 @@ class SectionHeader extends StatelessWidget {
         ],
       ),
     );
-  }
 }
 
 class ExperienceCard extends StatelessWidget {
+
+  const ExperienceCard({
+    super.key,
+    required this.company,
+    required this.position,
+    required this.location,
+    required this.startDate,
+    required this.endDate,
+    required this.description,
+    this.isCurrent = false,
+  });
   final String company;
   final String position;
   final String location;
@@ -41,20 +50,8 @@ class ExperienceCard extends StatelessWidget {
   final String description;
   final bool isCurrent;
 
-  const ExperienceCard({
-    Key? key,
-    required this.company,
-    required this.position,
-    required this.location,
-    required this.startDate,
-    required this.endDate,
-    required this.description,
-    this.isCurrent = false,
-  }) : super(key: key);
-
   @override
-  Widget build(BuildContext context) {
-    return Card(
+  Widget build(BuildContext context) => Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -132,10 +129,20 @@ class ExperienceCard extends StatelessWidget {
         ),
       ),
     );
-  }
 }
 
 class EducationCard extends StatelessWidget {
+
+  const EducationCard({
+    super.key,
+    required this.institution,
+    required this.degree,
+    required this.fieldOfStudy,
+    required this.startDate,
+    required this.endDate,
+    this.description = '',
+    this.gpa = 0.0,
+  });
   final String institution;
   final String degree;
   final String fieldOfStudy;
@@ -144,20 +151,8 @@ class EducationCard extends StatelessWidget {
   final String description;
   final double gpa;
 
-  const EducationCard({
-    Key? key,
-    required this.institution,
-    required this.degree,
-    required this.fieldOfStudy,
-    required this.startDate,
-    required this.endDate,
-    this.description = '',
-    this.gpa = 0.0,
-  }) : super(key: key);
-
   @override
-  Widget build(BuildContext context) {
-    return Card(
+  Widget build(BuildContext context) => Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -211,22 +206,20 @@ class EducationCard extends StatelessWidget {
         ),
       ),
     );
-  }
 }
 
 class SkillBadge extends StatelessWidget {
+
+  const SkillBadge({
+    super.key,
+    required this.name,
+    required this.level,
+  });
   final String name;
   final int level;
 
-  const SkillBadge({
-    Key? key,
-    required this.name,
-    required this.level,
-  }) : super(key: key);
-
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(BuildContext context) => Container(
       margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
@@ -247,37 +240,33 @@ class SkillBadge extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Row(
-            children: List.generate(5, (index) {
-              return Icon(
+            children: List.generate(5, (index) => Icon(
                 Icons.star,
                 size: 12,
                 color: index < level ? Colors.amber : Colors.grey[300],
-              );
-            }),
+              )),
           ),
         ],
       ),
     );
-  }
 }
 
 class ContactButton extends StatelessWidget {
+
+  const ContactButton({
+    super.key,
+    required this.label,
+    required this.icon,
+    required this.onPressed,
+    this.color = Colors.blue,
+  });
   final String label;
   final IconData icon;
   final VoidCallback onPressed;
   final Color color;
 
-  const ContactButton({
-    Key? key,
-    required this.label,
-    required this.icon,
-    required this.onPressed,
-    this.color = Colors.blue,
-  }) : super(key: key);
-
   @override
-  Widget build(BuildContext context) {
-    return Expanded(
+  Widget build(BuildContext context) => Expanded(
       child: GestureDetector(
         onTap: onPressed,
         child: Container(
@@ -306,26 +295,26 @@ class ContactButton extends StatelessWidget {
         ),
       ),
     );
-  }
 }
 
 class ProfileHeader extends StatelessWidget {
-  final String name;
-  final String position;
-  final String location;
-  final String summary;
 
   const ProfileHeader({
-    Key? key,
+    super.key,
     required this.name,
     required this.position,
     required this.location,
     required this.summary,
-  }) : super(key: key);
+    this.profileImage,
+  });
+  final String name;
+  final String position;
+  final String location;
+  final String summary;
+  final String? profileImage;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(BuildContext context) => Container(
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -335,67 +324,71 @@ class ProfileHeader extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 60,
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.person,
-                size: 80,
-                color: Colors.blue[800],
+        padding: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 45,
+                backgroundColor: Colors.white,
+                backgroundImage: profileImage != null
+                    ? AssetImage(profileImage!)
+                    : null,
+                child: profileImage == null
+                    ? Icon(Icons.person, size: 60, color: Colors.blue[800])
+                    : null,
               ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              name,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              position,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.white70,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.location_on, color: Colors.white70, size: 16),
-                const SizedBox(width: 4),
-                Text(
-                  location,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.white70,
-                  ),
+              const SizedBox(height: 12),
+              Text(
+                name,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Text(
-              summary,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 13,
-                color: Colors.white70,
-                height: 1.5,
               ),
-            ),
-          ],
+              const SizedBox(height: 6),
+              Text(
+                position,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white70,
+                ),
+              ),
+              const SizedBox(height: 6),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.location_on, color: Colors.white70, size: 14),
+                  const SizedBox(width: 4),
+                  Text(
+                    location,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Colors.white70,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Text(
+                summary,
+                textAlign: TextAlign.center,
+                maxLines: 4,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.white70,
+                  height: 1.4,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
-  }
 }

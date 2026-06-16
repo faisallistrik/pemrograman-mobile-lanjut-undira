@@ -21,14 +21,14 @@ void main() {
   nobleGases[21] = '411251167';
 
   // Membuat variabel mhs1 dan mhs2
-  var mhs1 = Map<String, String>();
+  var mhs1 = <String, String>{};
   mhs1['first'] = 'partridge';
   mhs1['second'] = 'turtledoves';
   mhs1['fifth'] = 'golden rings';
   mhs1['nama'] = 'Muhamad Faisal';
   mhs1['nim'] = '411251167';
 
-  var mhs2 = Map<int, String>();
+  var mhs2 = <int, String>{};
   mhs2[2] = 'helium';
   mhs2[10] = 'neon';
   mhs2[18] = 'argon';

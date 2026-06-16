@@ -21,7 +21,7 @@ void main() {
   nobleGases[21] = '411251167';
 
   // Membuat variabel mhs1 menggunakan Map constructor
-  var mhs1 = Map<String, String>();
+  var mhs1 = <String, String>{};
   mhs1['first'] = 'partridge';
   mhs1['second'] = 'turtledoves';
   mhs1['fifth'] = 'golden rings';
@@ -29,7 +29,7 @@ void main() {
   mhs1['nim'] = '411251167';
 
   // Membuat variabel mhs2 menggunakan Map constructor
-  var mhs2 = Map<int, String>();
+  var mhs2 = <int, String>{};
   mhs2[2] = 'helium';
   mhs2[10] = 'neon';
   mhs2[18] = 'argon';

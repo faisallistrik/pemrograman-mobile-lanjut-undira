@@ -13,7 +13,7 @@ void main() {
   print('\n--- Langkah 3 ---');
   print(list1);   // Output: [1, 2, null]
   
-  var list3 = [0, ...?list1];
+  var list3 = [0, ...list1];
   print(list3);   // Output: [0, 1, 2, null]
   print(list3.length); // Output: 4
 

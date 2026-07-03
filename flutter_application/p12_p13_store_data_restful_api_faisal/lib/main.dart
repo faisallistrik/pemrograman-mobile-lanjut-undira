@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  // Catatan: Method ini dipanggil saat navigasi ke PizzaDetailScreen.
+  // Catatan: Method untuk membuka layar tambah pizza.
   // Jika PizzaDetailScreen mengembalikan data pizza baru (via Navigator.pop),
   // pizza tersebut ditambahkan ke list lokal.
   Future<void> openAddPizzaScreen() async {
@@ -70,6 +70,65 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  // Catatan: Method untuk membuka layar edit pizza (langkah 18).
+  // Menerima data pizza yang akan diedit, mengirimkannya ke PizzaDetailScreen,
+  // lalu memperbarui list lokal dengan hasil edit.
+  Future<void> openEditPizzaScreen(Pizza pizza) async {
+    final Pizza? updatedPizza = await Navigator.push<Pizza>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PizzaDetailScreen(pizza: pizza),
+      ),
+    );
+
+    if (updatedPizza != null) {
+      setState(() {
+        // Catatan: Cari index pizza lama berdasarkan ID, lalu ganti dengan data baru
+        final index = pizzas.indexWhere((p) => p.id == updatedPizza.id);
+        if (index != -1) {
+          pizzas[index] = updatedPizza; // (langkah 19)
+        }
+      });
+    }
+  }
+
+  // Catatan: Method untuk menghapus pizza (langkah 21).
+  // Menampilkan dialog konfirmasi, lalu memanggil API DELETE dan
+  // menghapus dari list lokal.
+  Future<void> deletePizza(Pizza pizza) async {
+    // Catatan: Konfirmasi sebelum menghapus
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Hapus Pizza'),
+        content: Text('Yakin ingin menghapus "${pizza.pizzaName}"?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Batal'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Hapus', style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      HttpHelper helper = HttpHelper();
+      String result = await helper.deletePizza(pizza.id);
+      // Catatan: WireMock mengembalikan "Pizza was deleted" untuk DELETE sukses
+      final isSuccess = result.toLowerCase().contains('deleted') || result.toLowerCase().contains('success');
+      if (isSuccess) {
+        setState(() {
+          // Catatan: Hapus pizza dari list lokal (langkah 22)
+          pizzas.removeWhere((p) => p.id == pizza.id);
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +142,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemBuilder: (context, index) {
                     final p = pizzas[index];
                     return ListTile(
+                      // Catatan: Tap pada item → buka layar edit (langkah 18)
+                      onTap: () => openEditPizzaScreen(p),
                       leading: Container(
                         width: 64,
                         height: 64,
@@ -100,7 +161,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       title: Text(p.pizzaName),
                       subtitle: Text(p.description),
-                      trailing: Text('€${p.price.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('€${p.price.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                          const SizedBox(width: 8),
+                          // Catatan: Tombol hapus pizza (langkah 21)
+                          IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.red, size: 20),
+                            onPressed: () => deletePizza(p),
+                          ),
+                        ],
+                      ),
                     );
                   },
                 ),

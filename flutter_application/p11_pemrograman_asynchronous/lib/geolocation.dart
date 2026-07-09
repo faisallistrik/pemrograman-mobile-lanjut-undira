@@ -9,11 +9,13 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+  Future<Position>? position;
   String myPosition = '';
 
   @override
   void initState() {
     super.initState();
+    position = getPosition(); 
 
     getPosition().then((Position myPos) {
       String myPosition =
@@ -28,9 +30,7 @@ class _LocationScreenState extends State<LocationScreen> {
   Future<Position> getPosition() async {
     await Geolocator.requestPermission();
     await Geolocator.isLocationServiceEnabled();
-
     Position position = await Geolocator.getCurrentPosition();
-
     return position;
   }
 

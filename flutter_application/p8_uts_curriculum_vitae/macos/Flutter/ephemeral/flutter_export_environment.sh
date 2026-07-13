@@ -2,6 +2,7 @@
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=C:\dart-sdk\bin\flutter"
 export "FLUTTER_APPLICATION_PATH=C:\Users\muham\OneDrive\Documents\GitHub\pemrograman mobile lanjut\flutter_application\uts-curriculum-vitae"
+export "FLUTTER_FRAMEWORK_SWIFT_PACKAGE_PATH=C:\Users\muham\OneDrive\Documents\GitHub\pemrograman mobile lanjut\flutter_application\uts-curriculum-vitae\macos\Flutter\ephemeral\Packages\.packages\FlutterFramework"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.0"

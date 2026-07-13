@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'geolocation.dart';
+import 'navigation_dialog.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const LocationScreen(),
+      home: const NavigationDialogScreen(),
     );
   }
 }
@@ -128,7 +129,7 @@ class _FuturePageState extends State<FuturePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Back From Future'),
+        title: const Text('Back From Future - Faisal'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
